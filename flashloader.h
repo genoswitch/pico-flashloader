@@ -15,7 +15,15 @@ static const uint32_t FLASH_MAGIC2 = 0xc5ae52a9;
 
 static const uint32_t FLASH_APP_UPDATED = 0xe3fa4ef2; // App has been updated
 
-typedef struct __packed __aligned(4)
+/**
+ * pico-platform has a macro for '__packed __aligned(4)'
+ * When including flashloader.h from another project, the error
+ * "error: expected declaration specifiers or '...' before numeric constant" triggers for __aligned(4).
+ * This change appears to fix it.
+ *
+ * The flashloader already depends on pico-platform so no cmake changes are needed.
+ */
+typedef struct __packed_aligned
 {
     uint32_t magic1;
     uint32_t magic2;
