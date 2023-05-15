@@ -29,7 +29,7 @@ typedef struct __packed_aligned
     uint32_t magic2;
     uint32_t length;
     uint32_t crc32;
-    uint8_t  data[];
-}tFlashHeader;
+    uint8_t data[];
+} tFlashHeader;
 
 #endif // __FLASHLOADER_INCL__
